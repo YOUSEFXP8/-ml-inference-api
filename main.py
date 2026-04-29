@@ -10,13 +10,25 @@ import time
 import threading
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
+import torch.nn as nn
+
 
 
 
 app = FastAPI()
 
-model =models.resnet50(pretrained=True)
+
+
+
+
+with open("labels.json") as f:
+    labels = json.load(f)
+
+model = models.resnet50(weights=None)
+model.fc = nn.Linear(model.fc.in_features, len(labels))
+model.load_state_dict(torch.load("model/celeb.pth", map_location="cpu"))
 model.eval()
+
 
 preprocess = transforms.Compose([
     transforms.Resize(256),
@@ -27,10 +39,6 @@ preprocess = transforms.Compose([
         std=[0.229, 0.224, 0.225]
     ),
 ])
-
-url = "https://raw.githubusercontent.com/anishathalye/imagenet-simple-labels/master/imagenet-simple-labels.json"
-with urllib.request.urlopen(url) as f:
-    labels = json.load(f)
 
 executor = ThreadPoolExecutor(max_workers=4)
 jobs = {}  
