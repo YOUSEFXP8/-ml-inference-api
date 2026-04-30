@@ -1,3 +1,13 @@
+---
+title: ML Inference API
+emoji: 🎭
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
+
 # ML Inference API
 
 A production-grade REST API for celebrity face recognition, built with FastAPI and ResNet50 transfer learning. Handles multiple concurrent users with parallel inference, async job tracking, real-time metrics, and full Docker support.
