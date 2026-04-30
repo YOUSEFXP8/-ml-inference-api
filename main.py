@@ -60,12 +60,13 @@ async def predict(file: UploadFile):
     tensor = preprocess(image).unsqueeze(0)
 
     async def run():
-        metrics["total_requests"] += 1
-        metrics["queue_size"] += 1
+        with metrics_lock:
+          metrics["total_requests"] += 1
+          metrics["queue_size"] += 1
         start_time = time.time()
 
         jobs[job_id]["status"] = "processing"
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         
         with torch.no_grad():
             output = await loop.run_in_executor(executor, model, tensor)
