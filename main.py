@@ -41,7 +41,7 @@ preprocess = transforms.Compose([
     ),
 ])
 
-executor = ThreadPoolExecutor(max_workers=100)
+executor = ThreadPoolExecutor(max_workers=4)
 jobs = {}  
 
 metrics = {
