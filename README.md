@@ -121,7 +121,7 @@ This is the same pattern used in production ML serving systems — separate the 
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/ml-inference-api.git
+git clone https://github.com/YOUSEFXP8/ml-inference-api.git
 cd ml-inference-api
 
 # Install dependencies
