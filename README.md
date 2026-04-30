@@ -14,9 +14,7 @@ A production-grade REST API for celebrity face recognition, built with FastAPI a
 
 ## Demo
 
-> Live URL coming soon — deploying to Railway
-
----
+Live API: https://Yousefxp8-ml-inference-api.hf.space/docs
 
 ## Features
 
