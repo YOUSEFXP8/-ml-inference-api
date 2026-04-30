@@ -75,7 +75,6 @@ for epoch in range(epochs):
         optimizer.step()
         total_loss += loss.item()
 
-    # Validation
     model.eval()
     correct = 0
     total = 0
